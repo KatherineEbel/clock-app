@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Clock App</title>
+</head>
+<body>
+<main>
+  <div class="heading">
+    <div class="quote">
+      <p>
+        <span id="quote" class="quote__text fade-in">&quot;The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.&quot;</span>
+        <button id="refresh" class="refresh">
+          <img src="/assets/desktop/icon-refresh.svg" alt="refresh">
+        </button>
+      </p>
+      <p class="attribution fade-in">Ada Lovelace</p>
+    </div>
+  </div>
+  <section class="display">
+    <h1>
+      <img src="/assets/desktop/icon-sun.svg" alt="daytime">
+      <span class="text-light">Good morning</span>
+    </h1>
+    <h2 class="time">
+      <span>11:37</span>
+      <span class="text-light">BST</span>
+    </h2>
+    <h3 class="text-light">In London, UK</h3>
+    <button id="more" class="more">
+      <span class="more__label">
+      More
+      </span>
+      <span class="more__arrow">
+<!--      <img src="/assets/desktop/icon-arrow-down.svg" alt="more">-->
+      </span>
+    </button>
+  </section>
+</main>
+<footer>
+  <dl class="weather">
+    <dt>Current Timezone</dt>
+    <dd>Europe / London</dd>
+
+    <dt>Day of the year</dt>
+    <dd>295</dd>
+
+    <dt>Day of the week</dt>
+    <dd>5</dd>
+
+    <dt>Week Number</dt>
+    <dd>42</dd>
+  </dl>
+</footer>
+<script type="module" src="js/script.js"></script>
+</body>
+</html>
