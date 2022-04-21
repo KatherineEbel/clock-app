@@ -17,3 +17,4 @@
 .prettierignore
 assets/text
 requests.http
+js/geoapikey.js

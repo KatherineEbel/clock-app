@@ -31,10 +31,10 @@
       <span class="text-light">Good morning</span>
     </h1>
     <h2 class="time">
-      <span>11:37</span>
-      <span class="text-light">BST</span>
+      <span id="time">11<span class="blink">:</span>37</span>
+      <span id="abbreviation" class="text-light">BST</span>
     </h2>
-    <h3 class="text-light">In London, UK</h3>
+    <h3 class="text-light">In <span id="region_name">London</span>, <span id="country_code">UK</span></h3>
     <button id="more" class="more">
       <span class="more__label">
       More
@@ -46,18 +46,18 @@
   </section>
 </main>
 <footer>
-  <dl class="weather">
+  <dl class="details">
     <dt>Current Timezone</dt>
-    <dd>Europe / London</dd>
+    <dd id="time_zone">Europe/London</dd>
 
     <dt>Day of the year</dt>
-    <dd>295</dd>
+    <dd id="day_of_year">295</dd>
 
     <dt>Day of the week</dt>
-    <dd>5</dd>
+    <dd id="day_of_week">5</dd>
 
     <dt>Week Number</dt>
-    <dd>42</dd>
+    <dd id="week_number">42</dd>
   </dl>
 </footer>
 <script type="module" src="js/script.js"></script>

@@ -150,7 +150,7 @@ main {
     font-size: var(--text-xxl);
 }
 
-.time span:last-child {
+.time .text-light {
     display: block;
     font-weight: 300;
     font-size: 15px;
@@ -212,7 +212,19 @@ body.show-more .display {
     margin-top: auto;
 }
 
-.weather {
+.blink {
+    animation: blink 2s infinite;
+    position: relative;
+    bottom: 10px;
+}
+
+@keyframes blink {
+    0% { opacity: 0.5 }
+    50% { opacity: 1 }
+    100% { opacity: 0.5 }
+}
+
+.details {
     align-items: center;
     color: var(--dark-gray);
     display: grid;
@@ -221,7 +233,7 @@ body.show-more .display {
     padding: 48px 26px;
 }
 
-.weather dt {
+.details dt {
     font-size: 10px;
     grid-column: 1;
     opacity: 0.5;
@@ -229,7 +241,7 @@ body.show-more .display {
     text-transform: uppercase;
 }
 
-.weather dd {
+.details dd {
     font-size: 20px;
     font-weight: 700;
     grid-column: 2;
