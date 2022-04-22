@@ -1,5 +1,6 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 // body: "{\"abbreviation\":\"EDT\",\"country_code\":\"US\",\"day_of_week\":5,\"day_of_year\":112,\"region_name\":\"Florida\",\"time_zone\":\"America/New_York\",\"utc_datetime\":\"2022-04-22T13:16:38.810997+00:00\",\"week_number\":16}"
+import fetch from "node-fetch";
 const {GEO_API_KEY} = process.env
 
 const handler = async () => {

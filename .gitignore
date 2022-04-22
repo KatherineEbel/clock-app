@@ -20,3 +20,4 @@ requests.http
 public/js/geoapikey.js
 # Local Netlify folder
 .netlify
+node_modules
