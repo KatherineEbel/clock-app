@@ -21,7 +21,7 @@ export class QuoteGenerator {
       let {author, en: quote } = await response.json();
       return {author, quote }
     } catch (e) {
-      console.log(e)
+      alert('Sorry, unable to fetch a quote right now.')
       return null
     } finally {
       this.#refreshButton.toggle();

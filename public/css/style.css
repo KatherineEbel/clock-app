@@ -1,4 +1,4 @@
-html {
+:root {
     --color-text-primary: #fff;
     --color-text-secondary: #303030;
     --color-details: #303030;
@@ -6,18 +6,6 @@ html {
     --filter: 2.5483875rem;
     --main-bg: url(/assets/mobile/bg-image-daytime.jpg);
     --bg-gray: #999999;
-}
-
-html[data-theme="evening"] {
-    --color-text-primary: #fff;
-    --color-text-secondary: #303030;
-    --color-details: #fff;
-    --details-bg: rgba(0, 0, 0, 0.75);
-    --filter: 2.54rem;
-    --main-bg: url(/assets/mobile/bg-image-nighttime.jpg);
-}
-
-:root {
     --line-height-sm: 1.375rem;
     --text-size-quote: 0.75rem;
     --text-size-welcome: .9375rem;
@@ -34,19 +22,24 @@ html[data-theme="evening"] {
     --space-lg: 3rem;
 }
 
-@media (min-width: 600px) {
-    html {
-        --main-bg: url(/assets/mobile/bg-image-daytime.jpg);
-    }
+:root[data-theme="evening"] {
+    --color-text-primary: #fff;
+    --color-text-secondary: #303030;
+    --color-details: #fff;
+    --details-bg: rgba(0, 0, 0, 0.75);
+    --filter: 2.54rem;
+    --main-bg: url(/assets/mobile/bg-image-nighttime.jpg);
+}
 
-    html[data-theme="evening"] {
+
+@media (min-width: 600px) {
+    :root[data-theme="evening"] {
         --main-bg: url(/assets/tablet/bg-image-nighttime.jpg);
     }
 
     :root {
         --line-height-sm: 1.75rem;
         --main-bg: url(/assets/tablet/bg-image-daytime.jpg);
-        --main-bg-nightime: url(/assets/tablet/bg-image-nighttime.jpg);
         --text-size-quote: 1.125rem;
         --text-size-welcome: 1.125rem;
         --text-size-time: 10.9375rem;
@@ -58,16 +51,13 @@ html[data-theme="evening"] {
     }
 }
 
-@media (min-width: 900px) {
-    html {
-        --main-bg: url(/assets/desktop/bg-image-daytime.jpg);
-    }
-
-    html[data-theme="evening"] {
+@media (min-width: 980px) {
+    :root[data-theme="evening"] {
         --main-bg: url(/assets/desktop/bg-image-nighttime.jpg);
     }
 
     :root {
+        --main-bg: url(/assets/desktop/bg-image-daytime.jpg);
         --text-size-welcome: 1.25rem;
         --text-size-time: 12.5rem;
         --text-sz-tz: 2.5rem;
@@ -82,9 +72,12 @@ html[data-theme="evening"] {
 }
 
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--main-bg);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    var(--main-bg) no-repeat center center;
     background-size: cover;
-    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     color: var(--color-text-primary);
     display: flex;
     flex-direction: column;
@@ -217,6 +210,7 @@ main {
     display: flex;
     align-items: baseline;
     font-size: var(--text-size-time);
+    gap: 0.8125rem;
 }
 
 .time .text-light {
@@ -293,12 +287,20 @@ h3 {
 
 .blink {
     animation: blink 2s infinite;
+    position: relative;
+    bottom: 5px;
 }
 
 @keyframes blink {
-    0% { opacity: 0.5 }
-    50% { opacity: 1 }
-    100% { opacity: 0.5 }
+    0% {
+        opacity: 0.5
+    }
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0.5
+    }
 }
 
 .details {
@@ -401,6 +403,10 @@ html[data-theme="evening"] .time-icon {
         grid-column: 2;
     }
 
+    .blink {
+        bottom: 15px;
+    }
+
     .welcome {
         display: none;
     }
@@ -410,7 +416,7 @@ html[data-theme="evening"] .time-icon {
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 980px) {
     main {
         padding-top: 2.875rem;
     }
@@ -448,5 +454,15 @@ html[data-theme="evening"] .time-icon {
         margin-top: 0;
         margin-left: auto;
         margin-right: 165px;
+    }
+
+    .details:after {
+        background-color: var(--color-text-secondary);
+        content: '';
+        height: 252px;
+        left: 745px;
+        opacity: 0.5;
+        width: 1px;
+        position: absolute;
     }
 }

@@ -1,6 +1,4 @@
 import {QuoteGenerator} from "./quote-generator.js";
-import {GEO_API_KEY} from "./geoapikey.js";
-
 
 export class ClockApp {
   #moreButton;
@@ -17,7 +15,6 @@ export class ClockApp {
     this.#bindEvents();
     this.timeOfDay = 'morning';
     ClockApp.#getDetails().then(details => this.#updateUI(details));
-    this.#updateTimeOfDay(new Date())
   }
 
   #bindEvents() {
@@ -36,14 +33,10 @@ export class ClockApp {
 
   static async #getDetails() {
     try {
-      let geoIP = await fetch(`https://api.freegeoip.app/json/?apikey=${GEO_API_KEY}`)
-      const {country_code, region_name, time_zone} = await geoIP.json();
-
-      const worldTime = await fetch(`http://worldtimeapi.org/api/timezone/${time_zone}`)
-      const {abbreviation, day_of_week, day_of_year, week_number, utc_datetime} = await worldTime.json();
-      return {abbreviation, country_code, day_of_week, day_of_year, region_name, time_zone, utc_datetime, week_number}
+      let response = await fetch('./.netlify/functions/time-details');
+      return await response.json();
     } catch (e) {
-      console.log(e)
+      alert('Sorry, unable to fetch time details.')
     }
   }
 
@@ -63,7 +56,7 @@ export class ClockApp {
 
   static #getTime(dateString) {
     let date = new Date(dateString);
-    let hour = String(date.getHours()).padStart(2, '0')
+    let hour = String(date.getHours())
     let minutes = String(date.getMinutes()).padStart(2, '0')
     return `${hour}<span class="blink">:</span>${minutes}`
   }
@@ -109,7 +102,7 @@ export class ClockApp {
     delete details.utc_datetime;
     Object.keys(details).forEach(key => {
       const el = document.getElementById(key);
-      if (!el) return console.log('no element for', key)
+      if (!el) return;
       if (key === 'time') {
         el.innerHTML = details[key]
       } else {
