@@ -9,7 +9,8 @@
     --line-height-sm: 1.375rem;
     --text-size-quote: 0.75rem;
     --text-size-welcome: .9375rem;
-    --text-size-time: 6.25rem;
+    /*--text-size-time: 6.25rem;*/
+    --text-size-time: 5.25rem;
     --text-sz-tz: .9375rem;
     --text-size-location: .9375rem;
     --text-size-more: .75rem;
@@ -82,7 +83,6 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif;
-    overflow-y: hidden;
     max-height: 100vh;
     min-height: 100vh;
     position: relative;
@@ -191,6 +191,7 @@ main {
     display: flex;
     flex-direction: column;
     margin-top: auto;
+    padding-right: 2rem;
     text-transform: uppercase;
     transition: transform 300ms ease-in-out;
 }
@@ -213,6 +214,10 @@ main {
     gap: 0.8125rem;
 }
 
+.time span:first-child {
+    letter-spacing: -2.5px;
+}
+
 .time .text-light {
     display: block;
     font-weight: 300;
@@ -226,6 +231,7 @@ main {
     background: white;
     border: none;
     border-radius: 28px;
+    color: var(--color-text-secondary);
     display: flex;
     font-size: var(--text-size-more);
     font-weight: 700;
