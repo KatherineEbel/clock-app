@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +27,9 @@
   </div>
   <section class="display">
     <h1>
-      <img src="/assets/desktop/icon-sun.svg" alt="daytime">
-      <span class="text-light">Good morning</span>
+      <span id="time-icon" class="time-icon"></span>
+      <span class="welcome text-light">Good morning</span>
+      <span class="welcome expanded text-light">Good morning, it's currently</span>
     </h1>
     <h2 class="time">
       <span id="time">11<span class="blink">:</span>37</span>
@@ -40,7 +41,6 @@
       More
       </span>
       <span class="more__arrow">
-<!--      <img src="/assets/desktop/icon-arrow-down.svg" alt="more">-->
       </span>
     </button>
   </section>

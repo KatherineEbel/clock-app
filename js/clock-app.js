@@ -1,11 +1,13 @@
 import {QuoteGenerator} from "./quote-generator.js";
 import {GEO_API_KEY} from "./geoapikey.js";
 
+
 export class ClockApp {
   #moreButton;
   #quoteGenerator;
   #quote;
   #quoteAttribution;
+  timeOfDay;
 
   constructor() {
     this.#moreButton = document.getElementById('more')
@@ -13,7 +15,9 @@ export class ClockApp {
     this.#quote = document.getElementById('quote');
     this.#quoteAttribution = document.querySelector('.attribution');
     this.#bindEvents();
+    this.timeOfDay = 'morning';
     ClockApp.#getDetails().then(details => this.#updateUI(details));
+    this.#updateTimeOfDay(new Date())
   }
 
   #bindEvents() {
@@ -64,11 +68,33 @@ export class ClockApp {
     return `${hour}<span class="blink">:</span>${minutes}`
   }
 
-  #trackTime(date) {
+  static #timeOfDay(hour) {
+    if (hour >= 5 && hour < 12) {
+      return 'morning';
+    }
+    if (hour >= 12 && hour < 18) {
+      return 'afternoon'
+    }
+    if (hour >= 18 || hour < 5) {
+      return 'evening'
+    }
+  }
+
+  #updateTimeOfDay(date) {
+    const { timeOfDay } = this
+    this.timeOfDay = ClockApp.#timeOfDay(date.getHours());
+    document.querySelectorAll('.welcome').forEach(el => {
+      el.textContent = el.textContent.trim().replace(timeOfDay, this.timeOfDay);
+    })
+    document.querySelector('html').dataset.theme = this.timeOfDay === 'evening' ? 'evening' : ''
+  }
+
+  startClock(date) {
     let ms = date.getTime();
     const oneMinute = 60 * 1000
     setInterval(() => {
       let newDate = new Date(oneMinute + ms);
+      this.#updateTimeOfDay(newDate);
       ms = newDate.getTime();
       document.getElementById('time').innerHTML = ClockApp.#getTime(newDate.toUTCString())
     }, oneMinute)
@@ -76,7 +102,9 @@ export class ClockApp {
 
   #updateUI(details) {
     const { utc_datetime} = details;
-    this.#trackTime(new Date(utc_datetime));
+    let date = new Date(utc_datetime);
+    this.startClock(date);
+    this.#updateTimeOfDay(date)
     details.time = ClockApp.#getTime(utc_datetime);
     delete details.utc_datetime;
     Object.keys(details).forEach(key => {

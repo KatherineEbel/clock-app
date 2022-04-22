@@ -1,0 +1,17 @@
+{
+  "abbreviation": "EDT",
+  "client_ip": "107.72.176.113",
+  "datetime": "2022-04-21T11:36:40.220733-04:00",
+  "day_of_week": 4,
+  "day_of_year": 111,
+  "dst": true,
+  "dst_from": "2022-03-13T07:00:00+00:00",
+  "dst_offset": 3600,
+  "dst_until": "2022-11-06T06:00:00+00:00",
+  "raw_offset": -18000,
+  "timezone": "America/New_York",
+  "unixtime": 1650555400,
+  "utc_datetime": "2022-04-21T15:36:40.220733+00:00",
+  "utc_offset": "-04:00",
+  "week_number": 16
+}
