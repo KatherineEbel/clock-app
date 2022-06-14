@@ -83,8 +83,6 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif;
-    max-height: 100vh;
-    min-height: 100vh;
     position: relative;
 }
 
@@ -277,12 +275,13 @@ main {
 }
 
 footer {
+    position: sticky;
     background: var(--details-bg);
     backdrop-filter: blur(var(--filter));
     -webkit-backdrop-filter: blur(var(--filter));
     flex-shrink: 0;
     max-height: 0;
-    overflow-y: hidden;
+    overflow: hidden;
     transition: max-height 300ms ease-in-out;
 }
 
@@ -422,7 +421,7 @@ html[data-theme="evening"] .time-icon {
     }
 }
 
-@media (min-width: 980px) {
+@media (min-width: 1440px) {
     main {
         padding-top: 2.875rem;
     }
