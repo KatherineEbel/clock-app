@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --color-text-primary: #fff;
     --color-text-secondary: #303030;
@@ -33,7 +38,7 @@
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 550px) {
     :root[data-theme="evening"] {
         --main-bg: url(/assets/tablet/bg-image-nighttime.jpg);
     }
@@ -52,7 +57,7 @@
     }
 }
 
-@media (min-width: 980px) {
+@media (min-width: 1110px) {
     :root[data-theme="evening"] {
         --main-bg: url(/assets/desktop/bg-image-nighttime.jpg);
     }
@@ -66,10 +71,16 @@
         --text-size-dt: .9375rem;
         --text-size-dd: 3.5rem;
     }
-}
 
-* {
-    box-sizing: border-box;
+    .details:after {
+        background-color: var(--color-text-secondary);
+        content: '';
+        height: 252px;
+        left: 50%;
+        opacity: 0.5;
+        width: 1px;
+        position: absolute;
+    }
 }
 
 body {
@@ -80,10 +91,6 @@ body {
     position: relative;
     height: 100vh;
     overflow: hidden;
-}
-
-body.show-more main {
-    /*transform: translateY(-325px);*/
 }
 
 body.show-more .more__arrow {
@@ -99,6 +106,7 @@ body.show-more footer {
 }
 
 main {
+    display: grid;
     position: absolute;
     inset: 0;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -107,21 +115,16 @@ main {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    align-items: flex-start;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: var(--space-md);
     transition: bottom 300ms ease-in-out;
 }
 
-body.show-more main {
-    bottom: 320px;
+.main-wrapper {
+    display: grid;
+    padding: var(--space-md);
 }
 
-.main-container {
-    display: grid;
-    place-items: center;
+.heading {
+    place-self: flex-start;
 }
 
 .heading .attribution {
@@ -190,6 +193,10 @@ body.show-more main {
     to {
         transform: rotate(359deg);
     }
+}
+
+body.show-more main {
+    bottom: 320px;
 }
 
 body:not(.show-more) .display {
@@ -288,6 +295,7 @@ footer {
     backdrop-filter: blur(var(--filter));
     -webkit-backdrop-filter: blur(var(--filter));
     display: grid;
+    height: 375px;
     place-items: center;
     position: absolute;
     width: 100%;
@@ -366,10 +374,50 @@ html[data-theme="evening"] .time-icon {
     display: none;
 }
 
-@media (min-width: 600px) {
-    footer {
-        height: 440px;
+@media (min-width: 550px) {
+
+    .time {
+        margin-bottom: -50px;
     }
+
+    .main-wrapper {
+        place-items: center;
+    }
+
+    footer {
+        height: 400px;
+    }
+
+    .display {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-rows: min-content 1fr min-content;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: flex-start;
+    }
+
+    .display h1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .time {
+        grid-row: 2 / 1;
+        grid-column: 1 / 2;
+    }
+
+    .display h3 {
+        grid-column: 1 / 1;
+        grid-row: 3;
+    }
+
+    .more {
+        grid-row: 3;
+        grid-column: 2;
+        margin-top: 0;
+        margin-left: auto;
+    }
+
     .details {
         grid-template-rows: min-content 1fr min-content 1fr;
         grid-row-gap: 0;
@@ -436,53 +484,8 @@ html[data-theme="evening"] .time-icon {
     }
 }
 
-@media (min-width: 1100px) {
+@media (min-height: 1024px) {
     footer {
-        height: 400px;
-    }
-
-    main {
-        padding-top: 2.875rem;
-    }
-
-    .display {
-        display: grid;
-        grid-auto-flow: row;
-        grid-template-rows: min-content 1fr min-content;
-        grid-template-columns: repeat(2, 1fr);
-        place-items: flex-start;
-    }
-
-    .display h1 {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-
-    .time {
-        grid-row: 2 / 1;
-        grid-column: 1 / 2;
-    }
-
-    .display h3 {
-        grid-column: 1 / 1;
-        grid-row: 3;
-    }
-
-    .more {
-        grid-row: 3;
-        grid-column: 2;
-        margin-top: 0;
-        margin-left: auto;
-        /*margin-right: 165px;*/
-    }
-
-    .details:after {
-        background-color: var(--color-text-secondary);
-        content: '';
-        height: 252px;
-        left: 50%;
-        opacity: 0.5;
-        width: 1px;
-        position: absolute;
+        height: 440px;
     }
 }
